@@ -140,7 +140,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_D1_v2"
+          "vmSize": "Standard_D3_v2"
         },
         "osProfile": {
           "computerName": "[variables('vmName')]",
@@ -161,13 +161,17 @@
           "imageReference": {
             "publisher": "Canonical",
             "offer": "UbuntuServer",
-            "sku": "14.04.5-LTS",
+            "sku": "16.04.0-LTS",
             "version": "latest"
           },
           "osDisk": {
             "name": "[concat(variables('vmName'),'_OSDisk')]",
             "caching": "ReadWrite",
-            "createOption": "FromImage"
+            "diskSizeGB": 256,
+            "createOption": "FromImage",
+            "managedDisk": {
+              "storageAccountType": "StandardSSD_LRS"
+            }
           }
         },
         "networkProfile": {
